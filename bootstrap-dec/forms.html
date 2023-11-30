@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Bootstrap Form</title>
+</head>
+<body>
+    <div class="container">
+        <form action="" method="">
+            <h1>Form Control</h1>
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" id="password" required class="form-control">
+            <div class="form-text">
+                Password must contain 8 alpha-numeric characters.
+            </div>
+
+            <hr>
+            <h1>Form Select</h1>
+            <label for="faculty" class="form-label">Faculty</label>
+            <select name="faculty" id="faculty" class="form-select" required>
+                <option value="faculty1">Faculty 1</option>
+                <option value="faculty2">Faculty 2</option>
+                <option value="faculty3">Faculty 3</option>
+                <option value="faculty4">Faculty 4</option>
+            </select>
+            <hr>
+            <h1>Checks and Radios</h1>
+            <label for="activity" class="form-label">Activity</label>
+            <div class="form-check">
+                <input type="checkbox" name="activity" id="act-1" value="act-1" class="form-check-input">
+                <label for="act-1" class="form-check-label">Activity 1</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" name="activity" id="act-2" value="act-2" class="form-check-input">
+                <label for="act-2" class="form-check-label">Activity 2</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" name="activity" id="act-3" value="act-3" class="form-check-input">
+                <label for="act-3" class="form-check-label">Activity 3</label>
+            </div>
+
+            <br><br>
+            <label for="gender">Gender</label>
+            <div class="form-check">
+                <input type="radio" name="gender" id="male" value="male" class="form-check-input">
+                <label for="male" class="form-check-label">Male</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" name="gender" id="female" value="female" class="form-check-input">
+                <label for="female" class="form-check-label">Female</label>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
