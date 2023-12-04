@@ -130,4 +130,27 @@
     echo "<p>$num4 <= $num2.0 is $less_than_or_equal_to</p>";
 
 ?>
+<hr>
+<h1>Logical Operators</h1>
+<?php
+    $and1 = TRUE && TRUE; //TRUE
+    $and2 = TRUE && FALSE; //FALSE
+    $and3 = FALSE && FALSE;//FALSE
+
+    $or1 = TRUE || TRUE; //TRUE
+    $or2 = TRUE || FALSE;//TRUE
+    $or3 = FALSE || FALSE;//FALSE
+    
+    $not1 = !TRUE; //FALSE
+    $not2 = !FALSE; //TRUE
+
+    echo "<p>TRUE && TRUE is $and1</p>";
+    echo "<p>TRUE && FALSE is $and2</p>";
+    echo "<p>FALSE && FALSE is $and3</p>";
+    echo "<p>TRUE || TRUE is $or1</p>";
+    echo "<p>TRUE || FALSE is $or2</p>";
+    echo "<p>FALSE || FALSE is $or3</p>";
+    echo "<p>!TRUE is $not1</p>";
+    echo "<p>!FALSE is $not2</p>";
+?>
 
