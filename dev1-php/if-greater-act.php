@@ -8,6 +8,32 @@
 </head>
 <body>
     <div class="container py-5">
+        <div class="row justify-content-center mb-3">
+            <?php
+                if(isset($_POST["btn_submit"]))
+                {
+                    //INPUT
+                    $num1 = $_POST["num1"];
+                    $num2 = $_POST["num2"];
+
+                    //PROCESS & OUTPUT
+                    if($num1 > $num2)
+                    {
+                        echo "<div class='col-3 bg-success p-3'><h1 class='text-white text-center'>$num1</h1></div>";
+                        echo "<div class='col-3 bg-warning p-3'><h1 class='text-white text-center'>$num2</h1></div>";
+                    }
+                    elseif($num2 > $num1)
+                    {
+                        echo "<div class='col-3 bg-success p-3'><h1 class='text-white text-center'>$num2</h1></div>";
+                        echo "<div class='col-3 bg-warning p-3'><h1 class='text-white text-center'>$num1</h1></div>";
+                    }
+                    else
+                    {
+                        echo "<div class='col-6 bg-info p-3'><h1 class='text-white text-center'>$num1</h1></div>";
+                    }
+                }
+            ?>
+        </div>
         <div class="card w-25 mx-auto">
             <div class="card-body">
                 <form action="" method="post">
