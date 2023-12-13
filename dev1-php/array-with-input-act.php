@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Activity</title>
+</head>
+<body>
+    <form action="" method="post">
+        <label for="no-of-countries">How many countries have you been to?</label>
+        <input type="number" name="no_of_countries" id="no-of-countries" required>
+        <input type="submit" value="Set" name="btn_set">
+    </form>
+    <form action="" method="post">
+        <?php
+            if(isset($_POST["btn_set"]))
+            {
+                //INPUT
+                $no_of_countries = $_POST["no_of_countries"];
+
+                //PROCESS -display input fields for each country
+                for($i=1; $i<=$no_of_countries; $i++)
+                {
+                    echo "<label for='country-$i'>Country #$i";
+                    echo "<input type='text' name='country' id='country-$i' required><br><br>";
+                }
+
+                echo "<input type='submit' value='Save' name='btn_save'>";
+            }
+        ?>
+    </form>
+</body>
+</html>
