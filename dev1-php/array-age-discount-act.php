@@ -51,15 +51,86 @@
             {
                 //INPUT
                 $ages = $_POST["age"];
-
+                $ages_count = count($ages);
+                
                 //PROCESS
                 $prices = calculatePrice($ages); //it will calculate the price for each customer and this function will return an array
                 $total_price = calculateTotalPrice($prices);//will return the total price of all customers
-
+                
                 //OUTPUT
                 // insert your code here. display the table
+                echo "<table class='table w-25 mx-auto table-bordered'>";
+                echo "<thead class='table-dark'>
+                        <tr>
+                            <th>Age</th>
+                            <th>Price</th>
+                        </tr>
+                      </thead>";
+                echo "<tbody>";
+
+                    //$i=0 since the index starts at zero
+                    for($i=0;$i<$ages_count; $i++)
+                    {
+                        echo "<tr>
+                                <td>".$ages[$i]."</td>
+                                <td>".$prices[$i]."</td>
+                              </tr>";
+                    }
+                echo "<tr class='table-danger'><td>Total Price</td><td>$total_price</td></tr>";
+                echo "<tr class='table-primary'><td>Total No. of Customers</td><td>$ages_count</td></tr>";
+                echo "</tbody>";
+                echo "</table>";
             }
         ?>
     </div>
 </body>
 </html>
+<?php
+    function calculatePrice($ages)
+    {
+        $prices = [];
+        $regular_price = 325;
+
+        foreach($ages as $x)
+        {
+            if(0<=$x && $x<=5) //check if the age is between 0 to 5
+            {
+                //customer is FREE
+                // array_push($array_name, $value); //inserts a value into the array
+                array_push($prices,0);
+            }
+            elseif(6<=$x && $x<=10)//check if age is between 6 to 10
+            {
+                //apply 10% discount
+                //calculate the discounted price
+                $discounted_price = $regular_price * .90;
+                array_push($prices,$discounted_price);
+            }
+            elseif(60<=$x) //check if age is 60 and above
+            {
+                //apply 5% discount
+                $discounted_price = $regular_price *.95;
+                array_push($prices,$discounted_price);
+            }
+            else
+            {
+                array_push($prices,$regular_price); //customer will pay the regular price
+            }
+        }
+
+        //after calculating the price, return the array containing the prices
+        return $prices;
+    }
+
+    function calculateTotalPrice($prices)
+    {
+        $total =0;
+
+        foreach($prices as $x)
+        {
+            $total += $x; //$total = $total + $x;
+        }
+
+        return $total;
+    }
+?>

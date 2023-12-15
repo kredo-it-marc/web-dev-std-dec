@@ -78,3 +78,67 @@
 
 
 ?>
+<hr>
+<h1>Associative Array</h1>
+<?php
+    // method 1 - creating an array []
+    // Associative array uses named keys/index
+    $person = ["name"=>"Nikko", "age"=>25, "address"=>"Tagum City"];
+
+    // method 2 - array();
+    $book = array("title"=>"Adventures of Tom Sawyer", "author"=>"Mark Twain", "price"=>10.00);
+
+    //assigning individual values
+    // $array_name[key]
+    $age["ken"] = 20;
+    $age["lance"] = 18;
+    $age["mary"] = 19;
+
+    //displaying individual values
+    // echo $array_name[key]
+    echo $person["name"],"<br>"; //Nikko
+    echo $person["age"],"<br>"; //25
+    echo $person["address"],"<br>"; //Tagum City
+    echo "<br><br>";
+    echo $book["title"],"<br>"; //Adventures of Tom Sawyer
+    echo $book["author"],"<br>"; //Mark Twain
+    echo $book["price"],"<br>"; //10.00
+    echo "<br><br>";
+    echo $age["ken"],"<br>";//20
+    echo $age["lance"],"<br>";//18
+    echo $age["mary"],"<br>";//19
+
+    //foreach loop
+    foreach($person as $key => $value)
+    {
+        echo "<p>$key is $value</p>";
+    }
+?>
+<hr>
+<h1>2D Associative Array</h1>
+<?php
+    $market = [
+                "round" => ["fruit1"=>"Orange", "fruit2"=>"Grapes"],
+                "yellow" => ["fruit3"=>"Banana","fruit4"=>"Mango"]
+            ];
+
+    //display individual values
+    // $array_name[sub_array][key]
+    echo $market["round"]["fruit1"]."<br>";//Orange
+    echo $market["round"]["fruit2"],"<br>";//Grapes
+    echo $market["yellow"]["fruit3"],"<br>";//Banana
+    echo $market["yellow"]["fruit4"],"<br>";//Mango
+
+    foreach($market as $sub_array => $values)
+    {
+        echo "<h1>$sub_array</h1>";
+        
+        echo "<ul>";
+        foreach($values as $key => $fruit)
+        {
+            echo "<li>$fruit</li>";
+        }
+        echo "</ul>";
+
+    }
+?>
