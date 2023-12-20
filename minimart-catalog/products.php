@@ -1,3 +1,7 @@
+<?php 
+    session_start(); 
+    include "connection.php";    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +12,7 @@
     <title>Minimart Catalog | Products</title>
 </head>
 <body class="bg-light" style="min-height:100vh;">
+    <?php include "navbar.php"; ?>
     <div class="container py-5">
         <div class="w-75 mx-auto">
             <div class="text-end mb-4">
@@ -28,6 +33,29 @@
                 </thead>
                 <tbody>
                     <!-- display the products from the database -->
+                    <?php
+                        $products = getProducts();
+
+                        if($products && $products->num_rows>=1)
+                        {
+                            while($row = $products->fetch_assoc())
+                            {
+                                echo "<tr>";
+                                echo "<td>".$row["id"]."</td>";
+                                echo "<td>".$row["title"]."</td>";
+                                echo "<td>".$row["description"]."</td>";
+                                echo "<td>".$row["price"]."</td>";
+                                echo "<td>".$row["section_id"]."</td>";
+                                echo "<td><a class='btn btn-outline-warning btn-sm' href='edit-product.php'><i class='fas fa-edit'></i></a></td>";
+                                echo "<td><a class='btn btn-outline-danger btn-sm' href='delete-product.php'><i class='fas fa-trash'></i></a></td>";
+                                echo "</tr>";
+                            }
+                        }
+                        else
+                        {
+                            echo "<tr><td colspan='7' class='text-center fst-italic text-muted'>No records to display.</td></tr>";
+                        }
+                    ?>
                 </tbody>
             </table>
         </div>
@@ -35,3 +63,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>
+<?php
+    function getProducts()
+    {
+        $conn = dbConnect();
+        $sql = "SELECT * FROM products";
+        $result = $conn->query($sql);
+
+        return $result;
+    }
+?>
