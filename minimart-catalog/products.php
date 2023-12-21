@@ -45,9 +45,9 @@
                                 echo "<td>".$row["title"]."</td>";
                                 echo "<td>".$row["description"]."</td>";
                                 echo "<td>".$row["price"]."</td>";
-                                echo "<td>".$row["section_id"]."</td>";
-                                echo "<td><a class='btn btn-outline-warning btn-sm' href='edit-product.php'><i class='fas fa-edit'></i></a></td>";
-                                echo "<td><a class='btn btn-outline-danger btn-sm' href='delete-product.php'><i class='fas fa-trash'></i></a></td>";
+                                echo "<td>".$row["section"]."</td>";
+                                echo "<td><a class='btn btn-outline-warning btn-sm' href='edit-product.php?product_id=".$row["id"]."'><i class='fas fa-edit'></i></a></td>";
+                                echo "<td><a class='btn btn-outline-danger btn-sm' href='delete-product.php?product_id=".$row["id"]."'><i class='fas fa-trash'></i></a></td>";
                                 echo "</tr>";
                             }
                         }
@@ -67,7 +67,7 @@
     function getProducts()
     {
         $conn = dbConnect();
-        $sql = "SELECT * FROM products";
+        $sql = "SELECT products.id, products.title, products.description, products.price, sections.title as section FROM products INNER JOIN sections ON products.section_id = sections.id ";
         $result = $conn->query($sql);
 
         return $result;
